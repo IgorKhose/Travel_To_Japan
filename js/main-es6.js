@@ -13,13 +13,22 @@
 (function(){
     const burger=document.querySelector('.burger'),
           close=document.querySelector('.header__nav-close'),
-          nav = document.querySelector('.header__nav');
+          nav = document.querySelector('.header__nav'),
+          menuLinks=document.querySelectorAll('.header__link');
         burger.addEventListener('click',()=>{
                 nav.classList.add('header__nav-active');
         });
         close.addEventListener('click',()=>{
                 nav.classList.remove('header__nav-active');
         });
+        //Скрываем меню при нажатии на ссылку в мобильных устройствах
+        if(window.innerWidth<768){
+            menuLinks.forEach((each)=>{
+                each.addEventListener('click', ()=>{
+                    nav.classList.remove('header__nav-active');
+                })
+            })
+        }
 }());
 // Scroll to anchors
 
